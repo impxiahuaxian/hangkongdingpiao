@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hang"
+  id="myeclipse.1351510602875"
+  context-root="/hang"
+  j2ee-spec="1.4"
+  archive="hang.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

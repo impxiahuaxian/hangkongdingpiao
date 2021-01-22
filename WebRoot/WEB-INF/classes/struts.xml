@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="liu" extends="struts-default">
+		<global-results>
+			<result name="succeed">/common/succeed.jsp</result>
+			<result name="msg">/common/msg.jsp</result>
+		</global-results>
+
+		<action name="upload" class="com.util.upload" method="upload">
+			<result name="success">/upload/upload_re.jsp</result>
+		</action>
+
+		<action name="index" class="indexAction" method="index">
+			<result name="success">/qiantai/index.jsp</result>
+		</action>
+
+		<action name="userReg" class="userAction" method="userReg">
+		</action>
+		<action name="userEdit" class="userAction" method="userEdit">
+		</action>
+		<action name="userDel" class="userAction" method="userDel">
+		</action>
+		<action name="userMana" class="userAction" method="userMana">
+			<result name="success">/admin/user/userMana.jsp</result>
+		</action>
+		<action name="userXinxi" class="userAction" method="userXinxi">
+			<result name="success">/admin/user/userXinxi.jsp</result>
+		</action>
+		<action name="userAll" class="userAction" method="userAll">
+			<result name="success">/qiantai/user/userAll.jsp</result>
+		</action>
+		<action name="userDetailQian" class="userAction" method="userDetailQian">
+			<result name="success">/qiantai/user/userDetailQian.jsp</result>
+		</action>
+		<action name="userSearch" class="userAction" method="userSearch">
+			<result name="success">/qiantai/user/userAll.jsp</result>
+		</action>
+		<action name="zhaohui" class="userAction" method="zhaohui">
+		</action>
+
+
+
+		<action name="liuyanAdd" class="liuyanAction" method="liuyanAdd">
+		</action>
+		<action name="liuyanMana" class="liuyanAction" method="liuyanMana">
+			<result name="success">/admin/liuyan/liuyanMana.jsp</result>
+		</action>
+		<action name="liuyanDel" class="liuyanAction" method="liuyanDel">
+		</action>
+		<action name="liuyanHuifu" class="liuyanAction" method="liuyanHuifu">
+		</action>
+		<action name="liuyanDetail" class="liuyanAction" method="liuyanDetail">
+			<result name="success">/qiantai/liuyan/liuyanDetail.jsp</result>
+		</action>
+		<action name="liuyanAll" class="liuyanAction" method="liuyanAll">
+			<result name="success">/qiantai/liuyan/liuyanAll.jsp</result>
+		</action>
+
+
+
+		<action name="hangbanAdd" class="hangbanAction" method="hangbanAdd">
+		</action>
+		<action name="hangbanMana" class="hangbanAction" method="hangbanMana">
+			<result name="success">/admin/hangban/hangbanMana.jsp</result>
+		</action>
+		<action name="hangbanDel" class="hangbanAction" method="hangbanDel">
+		</action>
+		<!-- class,代表，访问这个类文件，method,表示类中的一个方法 -->
+		<action name="hangbanAll" class="hangbanAction" method="hangbanAll">
+			<result name="success">/qiantai/hangban/hangbanAll.jsp</result>
+		</action>
+		<action name="hangbanDetailQian" class="hangbanAction" method="hangbanDetailQian">
+			<result name="success">/qiantai/hangban/hangbanDetailQian.jsp</result>
+		</action>
+		<action name="hangbanRes" class="hangbanAction" method="hangbanRes">
+			<result name="success">/qiantai/hangban/hangbanAll.jsp</result>
+		</action>
+		<action name="addToCart" class="buyAction" method="addToCart">
+		</action>
+		<action name="delFromCart" class="buyAction" method="delFromCart">
+		</action>
+		<action name="orderAdd" class="buyAction" method="orderAdd">
+			<result name="success">/qiantai/hangban/hangbanAll.jsp</result>
+		</action>
+		<action name="orderMana" class="buyAction" method="orderMana">
+			<result name="success">/admin/order/orderMana.jsp</result>
+		</action>
+		<action name="orderDelAd" class="buyAction" method="orderDelAd">
+		</action>
+		<action name="orderShouli" class="buyAction" method="orderShouli">
+		</action>
+		<action name="orderDetail" class="buyAction" method="orderDetail">
+			<result name="success">/admin/order/orderDetail.jsp</result>
+		</action>
+
+		<action name="orderMine" class="buyAction" method="orderMine">
+			<result name="success">/qiantai/order/orderMine.jsp</result>
+		</action>
+		<action name="orderQuxiao" class="buyAction" method="orderQuxiao">
+		</action>
+	
+		
+	</package>
+</struts>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<!-- 建立数据源 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 数据库驱动，我使用的是Mysql数据库 -->
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<!-- 数据库地址，这里要注意一下编码方式-->
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/db_hang?useUnicode=true&amp;amp;amp;amp;amp;amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<!-- 把数据源注入给Session工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<!-- 配置映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/model/TAdmin.hbm.xml</value>
+			    <value>com/model/TUser.hbm.xml</value>
+			    <value>com/model/TLiuyan.hbm.xml</value>
+			    <value>com/model/THangban.hbm.xml</value>
+			    <value>com/model/TOrderitem.hbm.xml</value>
+			    <value>com/model/TOrder.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="indexAction" class="com.action.indexAction" scope="prototype">
+	</bean>
+	
+	
+	
+	
+	<!-- 把DAO注入给Session工厂 -->
+	<bean id="TUserDAO" class="com.dao.TUserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+
+	<bean id="userAction" class="com.action.UserAction" scope="prototype">
+		<property name="userDAO">
+			<ref bean="TUserDAO" />
+		</property>
+	</bean>
+	
+	
+	<!-- 后台的登录 -->
+	<bean id="loginService" class="com.service.loginService">
+		<property name="adminDAO">
+			<ref bean="TAdminDAO" />
+		</property>
+		<property name="userDAO">
+			<ref bean="TUserDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="TAdminDAO" class="com.dao.TAdminDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="TLiuyanDAO" class="com.dao.TLiuyanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="liuyanAction" class="com.action.liuyanAction" scope="prototype">
+		<property name="liuyanDAO">
+			<ref bean="TLiuyanDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="THangbanDAO" class="com.dao.THangbanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="hangbanAction" class="com.action.hangbanAction" scope="prototype">
+		<property name="hangbanDAO">
+			<ref bean="THangbanDAO" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="buyAction" class="com.action.buyAction" scope="prototype">
+		<property name="hangbanDAO">
+			<ref bean="THangbanDAO" />
+		</property>
+		<property name="orderitemDAO">
+			<ref bean="TOrderitemDAO" />
+		</property>
+		<property name="orderDAO">
+			<ref bean="TOrderDAO" />
+		</property>
+		<property name="userDAO">
+			<ref bean="TUserDAO" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	<bean id="TOrderitemDAO" class="com.dao.TOrderitemDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TOrderDAO" class="com.dao.TOrderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+	</beans>
